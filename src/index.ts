@@ -1,5 +1,4 @@
 import { Hono } from "hono";
-import hest from "./hest.txt";
 import { html } from "hono/html";
 
 const app = new Hono();
@@ -13,7 +12,7 @@ app.get("/hest", async (c) => c.html(html`
 			<style>body { background-color: black; } pre { color: white; }</style>
 		</head>
 		<body>
-			<pre>${hest}</pre>
+			<pre>${await Bun.file("src/hest.txt").text()}</pre>
 		</body>
 	</html>
 	`)
